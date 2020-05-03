@@ -1,0 +1,130 @@
+* {
+    
+    margin: 0;
+    border: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    position: relative;
+    height: 1300px;
+}
+
+header>section{
+    margin: 30px 0px 30px 0px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+    font-weight: 20px;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(248, 168, 204);
+    align-items: center;
+}
+.title-screen button {
+    margin-top: 100px;
+}
+
+.title {
+    margin: 30px 0px 10px 0px;
+    font-family: 'Monofett', cursive;
+    color: rgb(241, 82, 153);
+    text-align: center;
+    font-size: 4em;
+}
+
+header img {
+    display: flex;
+    width: 20vw;
+}
+
+.start-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.start-pressed img {
+    width: 200px;
+    height: 200px;
+
+}
+.start img {
+    width: 170px;
+    height: 200px;
+}
+
+.game {
+    margin: 50px auto 100px auto;
+    width: 95vw;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    margin: 5px;
+}
+
+.face-down {
+    display: flex;
+    border-radius: 15px;
+    border: 4px  rgb(250,202,224) solid; 
+    width: 14vw;
+    height: 20vh;
+}
+
+.face-up {
+    display: none;
+    width: 14vw;
+    pointer-events: none;
+}
+
+.reveal {
+    display: flex;
+}
+
+.unhide {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.completion-image {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;   
+    top: 450px;
+}
+
+.completion-image img{
+    width: 20vw;
+    border-radius: 10px;
+    border: 5px greenyellow solid;
+}
+
+.play-again {
+    color: white;
+    font-size: 2em;
+    font-weight: 400;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: lightgreen;
+    border-radius: 10px;
+    margin-bottom: 100px;
+    border: 5px rgb(129, 247, 255) solid;
+}
+
+.copyright {
+    position: absolute;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    color: lightgrey;
+    bottom: 0;
+    right: 0;
+}

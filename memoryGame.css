@@ -50,6 +50,7 @@ header img {
     height: 200px;
 
 }
+
 .start img {
     width: 170px;
     height: 200px;
@@ -130,5 +131,6 @@ header img {
 }
 
 button {
-    border: 0;
+    background-color: transparent;
+    outline: none;
 }

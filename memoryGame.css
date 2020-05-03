@@ -59,7 +59,7 @@ header img {
 .game {
     margin: 0px auto 0px auto;
     width: 97vw;
-    height: 70vh;
+    height: 60vh;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -74,7 +74,7 @@ header img {
 .face-down {
     display: flex;
     border-radius: 15px;
-    width: 13vw;
+    width: 14vw;
     height: 20vh;
 }
 

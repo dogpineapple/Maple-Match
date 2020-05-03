@@ -28,10 +28,10 @@ startGameBtn.addEventListener("click", function(event) {
 })
 
 playAgainBtn.addEventListener("click", function(event) {
-    flipCounter = 0;
-    matchesCounter = 0;
-    numberOfFlips.innerText = 0;
-    numberOfMatches.innerText = 0;
+    flipCounter.innerText = 0;
+    matchesCounter.innerText = 0;
+    numberOfFlips = 0;
+    numberOfMatches = 0;
     cards.forEach(element => {
         element.firstElementChild.classList.toggle('hide');
         element.lastElementChild.classList.toggle('reveal');

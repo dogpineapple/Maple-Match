@@ -7,7 +7,7 @@
 
 body {
     position: relative;
-    height: 1300px;
+    height: 1100px;
 }
 
 header>section{
@@ -27,7 +27,7 @@ header>section{
 }
 
 .title {
-    margin: 30px 0px 10px 0px;
+    margin: 20px 0px 5px 0px;
     font-family: 'Monofett', cursive;
     color: rgb(241, 82, 153);
     text-align: center;
@@ -36,7 +36,7 @@ header>section{
 
 header img {
     display: flex;
-    width: 20vw;
+    width: 15vw;
 }
 
 .start-button {
@@ -56,8 +56,9 @@ header img {
 }
 
 .game {
-    margin: 50px auto 100px auto;
-    width: 95vw;
+    margin: 0px auto 0px auto;
+    width: 97vw;
+    height: 70vh;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -73,7 +74,7 @@ header img {
     display: flex;
     border-radius: 15px;
     border: 4px  rgb(250,202,224) solid; 
-    width: 14vw;
+    width: 13vw;
     height: 20vh;
 }
 
@@ -127,4 +128,8 @@ header img {
     color: lightgrey;
     bottom: 0;
     right: 0;
+}
+
+button {
+    border: transparent;
 }

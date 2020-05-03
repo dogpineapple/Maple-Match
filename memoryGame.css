@@ -73,7 +73,6 @@ header img {
 .face-down {
     display: flex;
     border-radius: 15px;
-    border: 4px  rgb(250,202,224) solid; 
     width: 13vw;
     height: 20vh;
 }
@@ -131,5 +130,5 @@ header img {
 }
 
 button {
-    border: transparent;
+    border: 0;
 }

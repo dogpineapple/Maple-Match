@@ -46,9 +46,7 @@ for (var card of cards) {
         const backside = event.target.parentElement.firstElementChild
         const monsterside = event.target.parentElement.lastElementChild
 
-        numberOfFlips++;
-        flipCounter.innerText = numberOfFlips;
-        // First card picked by player will stay face-up and be given an id 'first-pick'.
+        // First card picked by player will stay face-up and be given an id 'first-pick'. Also increase the flip counter by 1.
         if (event.target.className === 'face-down' && numberOfFaceUp < 1) {
             event.target.setAttribute('id', 'first-pick');
 
@@ -57,22 +55,29 @@ for (var card of cards) {
 
             firstCardType = monsterside.classList[1];
             numberOfFaceUp++;
+            flipNumbers();
         } 
-        // Second card picked by player be flipped face-up and is checked if it is a match or not. 
+        // Second card picked by player be flipped face-up and is checked if it is a match or not. Also increase the flip counter by 1.
         if (event.target.className === 'face-down' && numberOfFaceUp >= 1) {
             backside.classList.toggle('hide');
             monsterside.classList.toggle('reveal');
 
             secondCardType = monsterside.classList[1];
-
+            flipNumbers();
             // Checks if the first card is the same type as the second card's type.
             if (firstCardType === secondCardType) {
                 numberOfMatches++;
                 matchesCounter.innerText = numberOfMatches;
 
-                // Check to replace the highest score with the new possible highest score. 
+               // Checks if all cards have been paired, if so, display the completion elements.
                 if (numberOfMatches === 9) {
-                    if (highestScore.innerText < numberOfFlips) highestScore.innerText = numberOfFlips;
+                     // Check to replace the highest score with the new possible highest score. 
+                    if (highestScore.innerText > numberOfFlips) {
+                        highestScore.innerText = numberOfFlips;
+                        setTimeout(function() {
+                            alert('Nice! You got a new high-score! :D');
+                        }, 500);
+                    }
                     document.querySelector('.completion-image').classList.toggle('hide');
                 }
                 // Remove the #first-pick to be used again for the next card to match. 
@@ -115,4 +120,10 @@ function shuffle(arr) {
     for (var i=0; i<arr.children.length; i++) {
         arr.appendChild(arr.children[Math.random() * i | 0]);
     }
+}
+
+// Increases the flip counter by 1 and alters the flip counter html.
+function flipNumbers() {
+    numberOfFlips++;
+    flipCounter.innerText = numberOfFlips;
 }

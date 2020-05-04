@@ -7,15 +7,14 @@ const titleScreen = document.querySelector('.title-screen');
 const startGameBtn = document.querySelector('.start');
 const startGameBtnPressed = document.querySelector('.start-pressed');
 const playAgainBtn = document.querySelector('.play-again');
+const highestScore = document.querySelector('.highest-score');
 var numberOfFaceUp = 0;
 var numberOfFlips = 0;
 var numberOfMatches = 0;
 var firstCardType = ""; 
 var secondCardType = "";
-var matchedArray = [];
 
-
-
+// MARK: Start Game Button - reveals the game window and hides the title screen, then shuffle the card div elements.
 startGameBtn.addEventListener("click", function(event) {
     startGameBtn.classList.toggle('hide');
     startGameBtnPressed.classList.toggle('hide');
@@ -27,6 +26,7 @@ startGameBtn.addEventListener("click", function(event) {
     }, 1000);
 })
 
+// MARK: Play Again Button - Resets all counters to 0 and flip all face-up cards, then Shuffle the card div elements.
 playAgainBtn.addEventListener("click", function(event) {
     flipCounter.innerText = 0;
     matchesCounter.innerText = 0;
@@ -40,7 +40,7 @@ playAgainBtn.addEventListener("click", function(event) {
     shuffle(gameWindow);
 })
 
-
+// MARK: Cards - When clicked, checks if it is a match. 
 for (var card of cards) {
     card.addEventListener("click", function(event){
         const backside = event.target.parentElement.firstElementChild
@@ -48,7 +48,7 @@ for (var card of cards) {
 
         numberOfFlips++;
         flipCounter.innerText = numberOfFlips;
-
+        // First card picked by player will stay face-up and be given an id 'first-pick'.
         if (event.target.className === 'face-down' && numberOfFaceUp < 1) {
             event.target.setAttribute('id', 'first-pick');
 
@@ -58,28 +58,29 @@ for (var card of cards) {
             firstCardType = monsterside.classList[1];
             numberOfFaceUp++;
         } 
+        // Second card picked by player be flipped face-up and is checked if it is a match or not. 
         if (event.target.className === 'face-down' && numberOfFaceUp >= 1) {
-
             backside.classList.toggle('hide');
             monsterside.classList.toggle('reveal');
 
             secondCardType = monsterside.classList[1];
 
+            // Checks if the first card is the same type as the second card's type.
             if (firstCardType === secondCardType) {
                 numberOfMatches++;
                 matchesCounter.innerText = numberOfMatches;
 
+                // Check to replace the highest score with the new possible highest score. 
                 if (numberOfMatches === 9) {
+                    if (highestScore.innerText < numberOfFlips) highestScore.innerText = numberOfFlips;
                     document.querySelector('.completion-image').classList.toggle('hide');
                 }
-
-                matchedArray.push(firstCardType);
+                // Remove the #first-pick to be used again for the next card to match. 
                 document.querySelector('#first-pick').removeAttribute('id');
                 numberOfFaceUp = 0;
             } else {
                 numberOfFaceUp = 0;
-                
-                // turn off pointer events if wrong card match to prevent glitches.
+                // Turn off pointer events if wrong card match to prevent glitches.
                 cards.forEach(element => {
                     element.style.pointerEvents = 'none';
                 });
@@ -87,12 +88,12 @@ for (var card of cards) {
                let timerId = setTimeout(function() {
                    tryAgain(backside, monsterside);
                }, 1000);
-
             }
         }  
     })
 }
 
+// Flips the chosen mis-match cards. This is called when the cards are not a match.
 function tryAgain(backside, monsterside) {
     backside.classList.toggle('hide');
     monsterside.classList.toggle('reveal');
@@ -103,13 +104,13 @@ function tryAgain(backside, monsterside) {
     firstPick.nextElementSibling.classList.toggle('reveal');
     firstPick.removeAttribute('id');
 
-    // for each card, set the style pointerevents to auto to enable pointer events again. 
+    // For each card, set the style pointerevents to auto to enable pointer events again. 
     cards.forEach(element => {
         element.style.pointerEvents = 'auto';
     });
 }
 
-// shuffles the cards within the game container.
+// Shuffles the cards within the game container.
 function shuffle(arr) {
     for (var i=0; i<arr.children.length; i++) {
         arr.appendChild(arr.children[Math.random() * i | 0]);
